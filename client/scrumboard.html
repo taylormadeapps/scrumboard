@@ -1,0 +1,29 @@
+<head>
+  <title>scrumboard</title>
+</head>
+
+<body>
+{{> renderStagePanels}
+
+
+</body>
+
+
+
+<template name="renderStagePanels">
+
+    <div id="stageInput">
+        {{> renderStagePanels}}
+    </div>
+    <div id="stageWip">
+        {{> renderStagePanels}}
+    </div>
+    <div id="stageOutput">
+        {{> renderStagePanels}}
+    </div>
+
+</template>
+
+<template name="renderStagePanels">
+    <span>{{greeting}}</span>
+</template>
