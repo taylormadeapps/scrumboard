@@ -2,7 +2,7 @@
 Meteor.startup(function () {
     if (Stages.find().count() === 0) {
         var data = [
-            {name: "Inputs", panelId: 'stageInputs',
+            {title: "Inputs", panelId: 'stageInputs',
                 subStages: [
                     {title: "New", panelId: 'subStageNew', tasks: [
                         {
@@ -18,7 +18,7 @@ Meteor.startup(function () {
                     {title: "Approved", panelId: 'subStageApproved', tasks: []}
                 ]
             },
-            {name: "Work In Progress", panelId: 'stageWorkInProgress',
+            {title: "Work In Progress", panelId: 'stageWorkInProgress',
                 subStages: [
                     {title: "Committed", panelId: 'subStageCommitted', tasks: []},
                     {title: "To Do", panelId: 'subStageToDo', tasks: []},
@@ -27,12 +27,16 @@ Meteor.startup(function () {
                     {title: "Removed", panelId: 'subStageRemoved', tasks: []}
                 ]
             },
-            {name: "Outputs", panelId: 'stageOutputs',
+            {title: "Outputs", panelId: 'stageOutputs',
                 subStages: [
                     {title: "Done", panelId: 'subStageDone', tasks: []}
                 ]
             }
         ];
 
+
+        for (var i = 0; i < data.length; i++) {
+            var list_id = Stages.insert(data[i]);
+        }
     }
 });

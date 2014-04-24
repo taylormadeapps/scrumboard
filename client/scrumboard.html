@@ -1,29 +1,56 @@
 <head>
-  <title>scrumboard</title>
+    <title>Scrum Board</title>
+    <link href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular"
+          rel="stylesheet"
+          type="text/css">
 </head>
 
 <body>
-{{> renderStagePanels}
+
+<div id="menuBar" class="menuBar"><span class="menuBarTitle">Scum-Board</span><span style="float: right;">{{> loginButtons align="Right"}}</span></div>
+<div id="mainPane" class="mainPane">{{> renderStagePanels}}</div>
 
 
 </body>
 
 
-
 <template name="renderStagePanels">
 
-    <div id="stageInput">
-        {{> renderStagePanels}}
+    {{#each stages}}
+    <div id="panelId" class="stagePanel">
+        <p class="stageTitle">{{title}}</p>
+        {{#each subStages}}
+        {{> renderSubStagePanel}}
+        {{/each}}
+
+
     </div>
-    <div id="stageWip">
-        {{> renderStagePanels}}
-    </div>
-    <div id="stageOutput">
-        {{> renderStagePanels}}
-    </div>
+
+
+    {{/each}}
 
 </template>
 
-<template name="renderStagePanels">
-    <span>{{greeting}}</span>
+<template name="renderSubStagePanel" >
+    <div id="{panelId}}" class="subStagePanel">
+        <p class="subStageTitle">{{title}}</p>
+        <ul>
+            {{#each tasks}}
+            {{> renderTask}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name="renderTask">
+    <li>
+        <a href="#">
+            <h2>{{title}}</h2>
+
+            <p class="taskDescription">{{description}}</p>
+
+            <h3>My Owner: {{owner}}</h3>
+        </a>
+
+    </li>
 </template>
